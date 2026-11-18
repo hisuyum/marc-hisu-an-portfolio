@@ -1,0 +1,1427 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marc Hisu-an</title>
+    <link rel="icon" type="image/jpg" href="image/favicon.jpg" />
+    <meta
+      name="description"
+      content="Marc Hisu-an — BSIT student, aspiring software engineer and cybersecurity enthusiast."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      @font-face {
+        font-family: "Geist Pixel";
+        src: url("https://cdn.jsdelivr.net/gh/vercel/geist-pixel-font@main/fonts/webfonts/GeistPixel-Square.woff2")
+          format("woff2");
+        font-display: swap;
+      }
+      .font-sans {
+        font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+      }
+      .font-mono {
+        font-family:
+          "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      .font-pixel {
+        font-family: "Geist Pixel", "Geist Mono", ui-monospace, monospace;
+      }
+
+      :root {
+        color-scheme: light;
+        --bg: 255 255 255;
+        --ink: 10 10 10;
+        --g50: 250 250 250;
+        --g100: 245 245 245;
+        --g200: 233 233 233;
+        --g300: 212 212 212;
+        --g400: 163 163 163;
+        --g500: 115 115 115;
+        --g600: 82 82 82;
+        --g700: 64 64 64;
+        --g800: 38 38 38;
+        --g900: 23 23 23;
+        --g950: 10 10 10;
+        --halftone: rgba(10, 10, 10, 0.9);
+        --sel-bg: #0a0a0a;
+        --sel-fg: #ffffff;
+      }
+      html.dark {
+        --bg: 12 12 15;
+        --ink: 244 244 245;
+        --g50: 24 24 27;
+        --g100: 30 30 34;
+        --g200: 42 42 48;
+        --g300: 58 58 66;
+        --g400: 138 138 146;
+        --g500: 160 160 168;
+        --g600: 184 184 192;
+        --g700: 206 206 212;
+        --g800: 228 228 232;
+        --g900: 240 240 243;
+        --g950: 250 250 250;
+        --halftone: rgba(244, 244, 245, 0.42);
+        --sel-bg: #fafafa;
+        --sel-fg: #0a0a0a;
+        color-scheme: dark;
+      }
+      html {
+        background-color: rgb(var(--bg));
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: rgb(var(--bg));
+        color: rgb(var(--ink));
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      ::selection {
+        background: var(--sel-bg);
+        color: var(--sel-fg);
+      }
+
+      /* Jump-to-section offset (clears the sticky mobile header) */
+      section[id] {
+        scroll-margin-top: 4rem;
+      }
+
+      /* Theme crossfade */
+      html.theme-anim,
+      html.theme-anim *,
+      html.theme-anim *::before,
+      html.theme-anim *::after {
+        transition:
+          background-color 0.5s ease,
+          border-color 0.5s ease,
+          color 0.5s ease,
+          fill 0.5s ease,
+          stroke 0.5s ease,
+          box-shadow 0.5s ease,
+          outline-color 0.5s ease !important;
+      }
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation: none;
+        mix-blend-mode: normal;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html.theme-anim,
+        html.theme-anim *,
+        html.theme-anim *::before,
+        html.theme-anim *::after {
+          transition: none !important;
+        }
+      }
+
+      /* Halftone */
+      .halftone {
+        background-image: radial-gradient(
+          circle at center,
+          rgba(10, 10, 10, 0.9) 1px,
+          transparent 1.6px
+        );
+        background-size: 9px 9px;
+      }
+      .halftone-wide {
+        background-size: 13px 13px;
+      }
+      html.dark .halftone,
+      html.dark .halftone-wide {
+        background-image: radial-gradient(
+          circle at center,
+          var(--halftone) 1px,
+          transparent 1.6px
+        );
+      }
+      .mask-tr {
+        -webkit-mask-image: radial-gradient(
+          ellipse 80% 80% at 100% 0%,
+          #000 0%,
+          transparent 65%
+        );
+        mask-image: radial-gradient(
+          ellipse 80% 80% at 100% 0%,
+          #000 0%,
+          transparent 65%
+        );
+      }
+      .mask-bl {
+        -webkit-mask-image: radial-gradient(
+          ellipse 80% 80% at 0% 100%,
+          #000 0%,
+          transparent 65%
+        );
+        mask-image: radial-gradient(
+          ellipse 80% 80% at 0% 100%,
+          #000 0%,
+          transparent 65%
+        );
+      }
+      .mask-fade-x {
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent,
+          #000 30%,
+          #000 70%,
+          transparent
+        );
+        mask-image: linear-gradient(
+          to right,
+          transparent,
+          #000 30%,
+          #000 70%,
+          transparent
+        );
+      }
+
+      /* Entrance */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .reveal {
+        opacity: 0;
+        animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .d1 {
+        animation-delay: 0.05s;
+      }
+      .d2 {
+        animation-delay: 0.12s;
+      }
+      .d3 {
+        animation-delay: 0.19s;
+      }
+      .d4 {
+        animation-delay: 0.26s;
+      }
+      .d5 {
+        animation-delay: 0.33s;
+      }
+      a,
+      button {
+        transition:
+          color 0.2s,
+          background-color 0.2s,
+          border-color 0.2s,
+          opacity 0.2s,
+          transform 0.2s;
+      }
+
+      /* Intro tags */
+      .intro-copy {
+        line-height: 2.15;
+      }
+      .intro-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3em;
+        padding: 0.15em 0.6em;
+        border-radius: 999px;
+        background: rgb(var(--g100));
+        color: rgb(var(--ink));
+        font-weight: 500;
+        line-height: 1.45;
+        white-space: nowrap;
+      }
+      .intro-tag svg {
+        width: 1.05em;
+        height: 1.05em;
+        flex: none;
+      }
+
+      /* Card deck */
+      .deck {
+        position: relative;
+        height: 19rem;
+        margin-inline: calc(50% - 50vw);
+        overflow-x: clip;
+        overflow-y: visible;
+      }
+      @supports not (overflow-x: clip) {
+        .deck {
+          overflow-x: hidden;
+        }
+      }
+      @media (min-width: 640px) {
+        .deck {
+          height: 17rem;
+        }
+      }
+      @media (min-width: 768px) {
+        .deck {
+          margin-inline: 0;
+          overflow: visible;
+        }
+      }
+      .deck-card {
+        position: absolute;
+        top: 0.75rem;
+        left: 50%;
+        width: 18rem;
+        margin-left: -9rem;
+        transform-origin: center bottom;
+        transition:
+          transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.35s ease;
+        will-change: transform;
+        outline: none;
+      }
+      @media (min-width: 640px) {
+        .deck-card {
+          width: 20.5rem;
+          margin-left: -10.25rem;
+        }
+      }
+      .deck-card.is-center {
+        transform: none;
+        z-index: 30;
+        box-shadow: 0 26px 55px -22px rgba(10, 10, 10, 0.3);
+      }
+      .deck-card.is-left {
+        transform: translateX(-40%) translateY(14px) rotate(-16deg) scale(0.88);
+        z-index: 10;
+        box-shadow: 0 16px 32px -18px rgba(10, 10, 10, 0.25);
+        cursor: pointer;
+      }
+      .deck-card.is-right {
+        transform: translateX(40%) translateY(14px) rotate(16deg) scale(0.88);
+        z-index: 20;
+        box-shadow: 0 16px 32px -18px rgba(10, 10, 10, 0.25);
+        cursor: pointer;
+      }
+      .deck-card.is-left::after,
+      .deck-card.is-right::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: rgb(var(--bg) / 0.4);
+        transition: background 0.35s ease;
+        pointer-events: none;
+      }
+      .deck-card.is-left:hover::after,
+      .deck-card.is-right:hover::after {
+        background: rgb(var(--bg) / 0);
+      }
+      .deck-card.is-center:hover {
+        transform: translateY(-7px) scale(1.015);
+        box-shadow: 0 34px 65px -22px rgba(10, 10, 10, 0.34);
+      }
+      .deck-card.is-left:hover {
+        transform: translateX(-45%) translateY(2px) rotate(-12deg) scale(0.92);
+        z-index: 25;
+      }
+      .deck-card.is-right:hover {
+        transform: translateX(45%) translateY(2px) rotate(12deg) scale(0.92);
+        z-index: 25;
+      }
+      .deck-card:not(.is-center) a {
+        pointer-events: none;
+      }
+
+      /* Theme switcher */
+      .theme-switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 1px;
+        padding: 2px;
+        border: 1px solid rgb(var(--g200));
+        border-radius: 9999px;
+      }
+      .theme-opt {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.35rem;
+        height: 1.35rem;
+        border-radius: 9999px;
+        color: rgb(var(--g400));
+      }
+      .theme-opt:hover {
+        color: rgb(var(--ink));
+      }
+      .theme-opt.is-active {
+        background: rgb(var(--g100));
+        color: rgb(var(--ink));
+      }
+      .theme-opt svg {
+        width: 13px;
+        height: 13px;
+      }
+
+      /* Mobile nav */
+      #mobileNav {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      #mobileNav.is-open {
+        opacity: 1;
+      }
+      #mobileNav .mnav-group {
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+          opacity 0.45s ease,
+          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      #mobileNav.is-open .mnav-group {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* Desktop sidebar email: fills the space between the 28px left padding and the 29px right gap */
+      @media (min-width: 1024px) {
+        nav[data-guide="sidebar"] .nav-email-wrap {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        nav[data-guide="sidebar"] .nav-email {
+          display: flex !important;
+          width: 100%;
+          margin: 0.375rem 0 0 !important;
+          padding: 0 !important;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 6px;
+          white-space: nowrap;
+        }
+      }
+    </style>
+    <script>
+      (function () {
+        const KEY = "theme";
+        const root = document.documentElement;
+        const mq = window.matchMedia
+          ? window.matchMedia("(prefers-color-scheme: dark)")
+          : null;
+        const reduce =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let animT;
+        function pref() {
+          try {
+            const v = localStorage.getItem(KEY);
+            return v === "dark" || v === "light" || v === "system"
+              ? v
+              : "system";
+          } catch (e) {
+            return "system";
+          }
+        }
+        function isDark(p) {
+          return p === "dark" || (p === "system" && !!mq && mq.matches);
+        }
+        function setClass(p) {
+          root.classList.toggle("dark", isDark(p));
+          document.querySelectorAll("[data-theme-opt]").forEach(function (el) {
+            el.classList.toggle(
+              "is-active",
+              el.getAttribute("data-theme-opt") === p,
+            );
+          });
+        }
+        function crossfade(p) {
+          root.classList.add("theme-anim");
+          setClass(p);
+          clearTimeout(animT);
+          animT = setTimeout(function () {
+            root.classList.remove("theme-anim");
+          }, 520);
+        }
+        function reveal(p, x, y) {
+          const r = Math.hypot(
+            Math.max(x, innerWidth - x),
+            Math.max(y, innerHeight - y),
+          );
+          const vt = document.startViewTransition(function () {
+            setClass(p);
+          });
+          vt.ready
+            .then(function () {
+              root.animate(
+                {
+                  clipPath: [
+                    "circle(0px at " + x + "px " + y + "px)",
+                    "circle(" + r + "px at " + x + "px " + y + "px)",
+                  ],
+                },
+                {
+                  duration: 540,
+                  easing: "cubic-bezier(.32,.08,.24,1)",
+                  pseudoElement: "::view-transition-new(root)",
+                },
+              );
+            })
+            .catch(function () {});
+        }
+        window.setTheme = function (p, ev) {
+          try {
+            localStorage.setItem(KEY, p);
+          } catch (e) {}
+          if (isDark(p) === root.classList.contains("dark")) {
+            setClass(p);
+            return;
+          }
+          if (reduce || !document.startViewTransition) {
+            crossfade(p);
+            return;
+          }
+          reveal(
+            p,
+            (ev && ev.clientX) || innerWidth,
+            (ev && ev.clientY) || innerHeight,
+          );
+        };
+        root.classList.toggle("dark", isDark(pref()));
+        if (mq)
+          mq.addEventListener("change", function () {
+            if (pref() === "system") crossfade("system");
+          });
+        document.addEventListener("DOMContentLoaded", function () {
+          setClass(pref());
+        });
+      })();
+    </script>
+    <script src="js/script.js" defer></script>
+  </head>
+  <body
+    class="relative overflow-x-hidden bg-white font-sans text-ink antialiased"
+  >
+    <!-- Page-wide halftone backdrop -->
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0">
+      <div
+        class="halftone halftone-wide mask-tr absolute right-0 top-0 h-[70vh] w-[65vw] opacity-[0.16]"
+      ></div>
+      <div
+        class="halftone mask-bl absolute bottom-0 left-0 h-[60vh] w-[55vw] opacity-[0.13]"
+      ></div>
+    </div>
+
+    <!-- Desktop sidebar -->
+    <nav
+      data-guide="sidebar"
+      class="fixed inset-y-0 left-0 z-50 hidden w-56 flex-col border-r border-gray-200 bg-white px-7 py-8 lg:flex"
+    >
+      <a
+        href="index.html"
+        class="shrink-0 font-pixel text-[15px] leading-none hover:opacity-60"
+        >Marc Hisu-an</a
+      >
+      <div
+        class="mt-9 flex flex-1 flex-col gap-4 overflow-y-auto font-mono text-[13px]"
+      >
+        <div class="flex flex-col gap-2.5">
+          <a
+            href="#project"
+            class="relative inline-flex w-fit items-center gap-2.5 text-gray-500 hover:text-ink"
+            >Project</a
+          >
+          <a
+            href="#skills"
+            class="relative inline-flex w-fit items-center gap-2.5 text-gray-500 hover:text-ink"
+            >Skills</a
+          >
+          <a
+            href="#certification"
+            class="relative inline-flex w-fit items-center gap-2.5 text-gray-500 hover:text-ink"
+            >Certification</a
+          >
+          <a
+            href="#education"
+            class="relative inline-flex w-fit items-center gap-2.5 text-gray-500 hover:text-ink"
+            >Education</a
+          >
+        </div>
+      </div>
+      <div class="mt-6 shrink-0 nav-email-wrap">
+        <p class="text-[12px] leading-relaxed text-gray-400">
+          Questions, ideas, or project suggestions? Email me at
+        </p>
+        <a
+          href="mailto:marchisuan10@gmail.com"
+          target="_blank"
+          rel="noopener"
+          data-guide="email"
+          class="nav-email font-mono text-ink hover:text-gray-500"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            class="h-[1.15em] w-[1.15em] shrink-0"
+          >
+            <rect
+              x="3"
+              y="5"
+              width="18"
+              height="14"
+              rx="2"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+            <path
+              d="M4 7l8 6 8-6"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="nav-email-text">marchisuan10@gmail.com</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Mobile header -->
+    <header
+      class="sticky top-0 z-50 border-b border-gray-200/70 bg-white/90 backdrop-blur-md lg:hidden"
+    >
+      <div
+        class="mx-auto flex max-w-3xl items-center justify-between px-6 py-3"
+      >
+        <a
+          href="index.html"
+          class="font-pixel text-[14px]"
+          >Marc Hisu-an</a
+        >
+        <button
+          type="button"
+          onclick="openMobileNav()"
+          aria-label="Open menu"
+          class="-mr-1 p-1 text-gray-700 hover:text-ink"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M4 7h16M4 12h16M4 17h16"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile menu (unchanged) -->
+    <div
+      id="mobileNav"
+      class="fixed inset-0 hidden flex-col bg-white lg:hidden"
+      style="z-index: 60"
+    >
+      <div
+        class="flex items-center justify-between border-b border-gray-200 px-6 py-3"
+      >
+        <a
+          href="index.html"
+          class="font-pixel text-[14px]"
+          >Marc Hisu-an</a
+        >
+        <button
+          type="button"
+          onclick="closeMobileNav()"
+          aria-label="Close menu"
+          class="-mr-1 p-1 text-gray-700 hover:text-ink"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M5 5l14 14M19 5L5 19"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="flex flex-1 flex-col overflow-y-auto px-7 py-8 font-mono text-[16px]"
+      >
+        <div
+          class="mnav-group flex flex-col gap-4"
+          style="transition-delay: 0.05s"
+        >
+          <a
+            href="#project"
+            onclick="closeMobileNav()"
+            class="w-fit text-gray-700 hover:text-ink"
+            >Project</a
+          >
+          <a
+            href="#skills"
+            onclick="closeMobileNav()"
+            class="w-fit text-gray-700 hover:text-ink"
+            >Skills</a
+          >
+          <a
+            href="#certification"
+            onclick="closeMobileNav()"
+            class="w-fit text-gray-700 hover:text-ink"
+            >Certification</a
+          >
+          <a
+            href="#education"
+            onclick="closeMobileNav()"
+            class="w-fit text-gray-700 hover:text-ink"
+            >Education</a
+          >
+        </div>
+        <div class="my-5 h-px bg-gray-200"></div>
+        <div class="mnav-group" style="transition-delay: 0.11s">
+          <div class="theme-switch" role="group" aria-label="Theme">
+            <button
+              type="button"
+              data-theme-opt="system"
+              onclick="setTheme('system', event)"
+              class="theme-opt"
+              title="System"
+              aria-label="System theme"
+            >
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect
+                  x="3"
+                  y="4"
+                  width="18"
+                  height="13"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                />
+                <path
+                  d="M9 21h6M12 17v4"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              data-theme-opt="light"
+              onclick="setTheme('light', event)"
+              class="theme-opt"
+              title="Light"
+              aria-label="Light theme"
+            >
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="4"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                />
+                <path
+                  d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              data-theme-opt="dark"
+              onclick="setTheme('dark', event)"
+              class="theme-opt"
+              title="Dark"
+              aria-label="Dark theme"
+            >
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M20 13.6A8 8 0 1 1 10.4 4a6.2 6.2 0 0 0 9.6 9.6z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="mt-6 shrink-0" style="padding-right: 29px">
+            <p class="mt-5 text-[12px] leading-relaxed text-gray-400">
+              Questions, ideas, or project suggestions? Email me at
+            </p>
+            <a
+              href="https://mail.google.com/mail/?view=cm&to=marchisuan10@gmail.com"
+              target="_blank"
+              rel="noopener"
+              data-guide="email"
+              class="mt-1.5 ml-auto mr-px flex w-fit items-center gap-2 font-mono text-[13px] text-ink hover:text-gray-500"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                class="h-[1.15em] w-[1.15em] shrink-0"
+              >
+                <rect
+                  x="3"
+                  y="5"
+                  width="18"
+                  height="14"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                />
+                <path
+                  d="M4 7l8 6 8-6"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              marchisuan10@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main id="top" class="relative z-10 lg:pl-56">
+      <div class="mx-auto max-w-2xl px-6">
+        <!-- Hero -->
+        <section class="relative pt-20 pb-16 sm:pt-28">
+          <div
+            class="grid gap-9 sm:grid-cols-[18rem_1fr] sm:items-start sm:gap-10"
+          >
+            <div class="reveal d1 mx-auto w-full max-w-[18rem] sm:mx-0">
+              <div class="relative">
+                <img
+                  id="profile-gaze"
+                  src="image/profile.png"
+                  data-direction="center"
+                  alt="Marc Hisu-an"
+                  width="402"
+                  height="402"
+                  loading="eager"
+                  decoding="async"
+                  fetchpriority="high"
+                  class="block h-auto w-full select-none"
+                  draggable="false"
+                />
+              </div>
+            </div>
+            <div>
+              <h1
+                data-guide="name"
+                class="reveal d2 font-pixel text-3xl leading-none sm:text-[2.6rem]"
+              >
+                Marc Hisu-an
+              </h1>
+              <p class="intro-copy reveal d3 mt-6 text-[15px] text-gray-600">
+                I'm a BSIT student from PLV and an aspiring
+                <span class="intro-tag">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m7 7-5 5 5 5m10-10 5 5-5 5m-4-13-2 18" />
+                  </svg>
+                  full-stack
+                </span>
+                engineer and
+                <span class="intro-tag">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M12 3 4 6v6c0 4.5 3.4 7.7 8 9 4.6-1.3 8-4.5 8-9V6l-8-3Zm-3 9 2 2 4-4"
+                    />
+                  </svg>
+                  cybersecurity
+                </span>
+                enthusiast. I build simple
+                <span class="intro-tag">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1ZM7 9l3 3-3 3m5 0h5"
+                    />
+                  </svg>
+                  crud systems
+                </span>
+                and keep learning
+                <span class="intro-tag">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M7 10h3V7L6.5 3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1-3 3l-6-6a6 6 0 0 1-8-8L7 10Z"
+                    />
+                  </svg>
+                  new tools
+                </span>
+                and techniques for my future career.
+              </p>
+              <div
+                data-guide="socials"
+                class="reveal d5 mt-7 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-[12px] text-gray-500"
+              >
+                <a
+                  href="https://github.com/hisuyum"
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:text-ink"
+                  >github ↗</a
+                >
+                <a
+                  href="https://tryhackme.com/p/hisudo"
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:text-ink"
+                  >tryhackme ↗</a
+                >
+                <a
+                  href="https://www.facebook.com/marchisuan13"
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:text-ink"
+                  >facebook ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Affiliations -->
+        <section
+          aria-label="Affiliations"
+          class="border-t border-gray-200 py-5"
+        >
+          <div class="grid grid-cols-3 divide-x divide-gray-200">
+            <div
+              class="group flex min-w-0 flex-col items-start gap-2 pr-3 sm:flex-row sm:items-center sm:gap-3 sm:pr-5"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                <path
+                  d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"
+                />
+              </svg>
+              <span class="min-w-0 font-mono leading-tight">
+                <span class="block text-[12px] font-semibold"
+                  >Valenzuela, PH</span
+                >
+                <span
+                  class="mt-1 block whitespace-nowrap text-[9px] uppercase tracking-wider text-gray-500 sm:text-[10px]"
+                  >Based In</span
+                >
+              </span>
+            </div>
+            <div
+              class="group flex min-w-0 flex-col items-start gap-2 px-3 sm:flex-row sm:items-center sm:gap-3 sm:px-5"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"
+                />
+                <path d="M11 11a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                <path d="M12 12l0 2.5" />
+              </svg>
+              <span class="min-w-0 font-mono leading-tight">
+                <span class="block text-[12px] font-semibold"
+                  >Cybersecurity</span
+                >
+                <span
+                  class="mt-1 block whitespace-nowrap text-[9px] uppercase tracking-wider text-gray-500 sm:text-[10px]"
+                  >Studying</span
+                >
+              </span>
+            </div>
+            <div
+              class="group flex min-w-0 flex-col items-start gap-2 pl-3 sm:flex-row sm:items-center sm:gap-3 sm:pl-5"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"
+                />
+                <path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" />
+                <path d="M12 12l0 .01" />
+                <path d="M3 13a20 20 0 0 0 18 0" />
+              </svg>
+              <span class="min-w-0 font-mono leading-tight">
+                <span class="block text-[12px] font-semibold"
+                  >Open to work</span
+                >
+                <span
+                  class="mt-1 block whitespace-nowrap text-[9px] uppercase tracking-wider text-gray-500 sm:text-[10px]"
+                  >Part-time · Freelance</span
+                >
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stats -->
+        <section
+          data-guide="stats"
+          class="grid grid-cols-3 divide-x divide-gray-200 border-t border-gray-200"
+        >
+          <div class="py-6 pr-3 sm:pr-5">
+            <div class="flex items-center gap-1">
+              <span class="font-pixel text-lg leading-none">1 yr</span>
+            </div>
+            <div
+              class="mt-2 font-mono text-[11px] uppercase tracking-wider text-gray-500"
+            >
+              coding
+            </div>
+          </div>
+          <div class="py-6 px-3 sm:px-5">
+            <div class="flex items-center gap-1">
+              <span class="font-pixel text-lg leading-none">2</span>
+            </div>
+            <div
+              class="mt-2 font-mono text-[11px] uppercase tracking-wider text-gray-500"
+            >
+              languages spoken
+            </div>
+          </div>
+          <div class="py-6 pl-3 sm:pl-5">
+            <div class="flex items-center gap-1">
+              <span class="font-pixel text-lg leading-none">5</span>
+            </div>
+            <div
+              class="mt-2 font-mono text-[11px] uppercase tracking-wider text-gray-500"
+            >
+              tryhackme rooms
+            </div>
+          </div>
+        </section>
+
+        <div
+          aria-hidden="true"
+          class="halftone halftone-wide mask-fade-x my-2 h-6 w-full opacity-[0.18]"
+        ></div>
+
+        <!-- 01 Project -->
+        <section id="project" class="py-14">
+          <div class="mb-8 flex items-baseline justify-between">
+            <h2 class="font-pixel text-sm text-gray-400">01 — project</h2>
+          </div>
+          <div class="deck" data-deck>
+            <article
+              class="deck-card is-center rounded-2xl border border-gray-200 bg-white p-5"
+              role="button"
+              tabindex="0"
+              aria-label="Show Tic Tac Toe"
+              onclick="activateCard(this)"
+              onkeydown="
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  activateCard(this);
+                }
+              "
+            >
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span
+                  class="inline-flex items-center gap-1.5 rounded-full bg-ink px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-white"
+                  >Desktop Application</span
+                >
+              </div>
+              <div class="mt-4 flex items-center gap-3.5">
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src="image/tic-tac-toe.png"
+                  alt="Tic Tac Toe icon"
+                  class="h-12 w-12 shrink-0 rounded-xl border border-gray-200 shadow-sm"
+                />
+                <h3 class="font-pixel text-base leading-tight text-ink">
+                  Tic Tac Toe
+                </h3>
+              </div>
+              <p class="mt-3 text-[13px] leading-relaxed text-gray-600">
+                An interactive two-player Tic-Tac-Toe game built with Java.
+              </p>
+              <div class="mt-4 flex items-center gap-2">
+                <a
+                  href="https://github.com/hisuyum/tic-tac-toe"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Get it on - Github"
+                  class="transition-opacity hover:opacity-80"
+                >
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    src="image/github-badge.svg"
+                    alt="Github"
+                    class="h-8 w-auto"
+                  />
+                </a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 02 Skills -->
+        <section id="skills" class="py-14">
+          <div class="mb-8 flex items-baseline justify-between">
+            <h2 class="font-pixel text-sm text-gray-400">02 — skills</h2>
+          </div>
+          <div class="space-y-10">
+            <div class="reveal">
+              <h3
+                class="mb-4 font-mono text-[11px] uppercase tracking-wider text-gray-400"
+              >
+                Frontend
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >HTML</span
+                >
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >CSS</span
+                >
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >JavaScript</span
+                >
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >TypeScript</span
+                >
+              </div>
+            </div>
+            <div class="reveal">
+              <h3
+                class="mb-4 font-mono text-[11px] uppercase tracking-wider text-gray-400"
+              >
+                Backend
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >Java</span
+                >
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >Python</span
+                >
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >MySQL</span
+                >
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >SSMS</span
+                >
+              </div>
+            </div>
+            <div class="reveal">
+              <h3
+                class="mb-4 font-mono text-[11px] uppercase tracking-wider text-gray-400"
+              >
+                Developer Tools
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >Git</span
+                >
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >GitHub</span
+                >
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >VS Code</span
+                >
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >JetBrains IntelliJ</span
+                >
+                <span
+                  class="tag rounded-md border border-gray-200 bg-white px-3 py-1.5 font-mono text-[13px] text-gray-700 hover:border-gray-400 hover:text-ink"
+                  >PyCharm</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 03 Certification -->
+        <section id="certification" class="py-14">
+          <div class="mb-8 flex items-baseline justify-between">
+            <h2 class="font-pixel text-sm text-gray-400">03 — certification</h2>
+          </div>
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <a
+              href="https://www.netacad.com/recognitions/verify/f7a2b1bd-4dc3-4207-9e51-f4bee6d8f677"
+              target="_blank"
+              rel="noopener"
+              class="group relative flex flex-col items-center rounded-xl bg-gradient-to-b from-gray-50 to-white px-4 py-5 text-center shadow-[0_8px_22px_-14px_rgba(10,10,10,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-20px_rgba(10,10,10,0.4)]"
+            >
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-[5px] rounded-lg border border-gray-200/70"
+              ></span>
+              <img
+                loading="lazy"
+                decoding="async"
+                src="image/introduction_to_cybersecurity_16.png"
+                alt="Cisco Introduction To Cybersecurity Badge"
+                class="relative h-9 w-9 rounded-md border border-gray-200 bg-white object-contain p-1"
+              />
+              <h3
+                class="relative mt-3 text-[13px] font-semibold leading-snug text-ink"
+              >
+                Introduction to Cybersecurity
+              </h3>
+              <p
+                class="relative mt-1 font-mono text-[9.5px] uppercase tracking-wider text-gray-400"
+              >
+                Cisco Networking Academy
+              </p>
+              <div
+                class="relative mt-3 flex items-center gap-1.5 text-gray-300 group-hover:text-ink"
+              >
+                <svg
+                  viewBox="0 0 13 22"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  class="h-[14px] w-auto shrink-0"
+                >
+                  <path
+                    d="M0 -4C2.1 -2.6 2.1 2.6 0 4C-2.1 2.6 -2.1 -2.6 0 -4Z"
+                    transform="translate(8 5) rotate(46)"
+                  />
+                  <path
+                    d="M0 -4.3C2.3 -2.8 2.3 2.8 0 4.3C-2.3 2.8 -2.3 -2.8 0 -4.3Z"
+                    transform="translate(4.6 11) rotate(14)"
+                  />
+                  <path
+                    d="M0 -4C2.1 -2.6 2.1 2.6 0 4C-2.1 2.6 -2.1 -2.6 0 -4Z"
+                    transform="translate(8 17) rotate(-30)"
+                  />
+                </svg>
+                <span
+                  class="font-mono text-[9px] uppercase tracking-[0.16em] text-gray-400 group-hover:text-ink"
+                  >Verify</span
+                >
+                <span class="inline-flex -scale-x-100">
+                  <svg
+                    viewBox="0 0 13 22"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    class="h-[14px] w-auto shrink-0"
+                  >
+                    <path
+                      d="M0 -4C2.1 -2.6 2.1 2.6 0 4C-2.1 2.6 -2.1 -2.6 0 -4Z"
+                      transform="translate(8 5) rotate(46)"
+                    />
+                    <path
+                      d="M0 -4.3C2.3 -2.8 2.3 2.8 0 4.3C-2.3 2.8 -2.3 -2.8 0 -4.3Z"
+                      transform="translate(4.6 11) rotate(14)"
+                    />
+                    <path
+                      d="M0 -4C2.1 -2.6 2.1 2.6 0 4C-2.1 2.6 -2.1 -2.6 0 -4Z"
+                      transform="translate(8 17) rotate(-30)"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- 04 Education -->
+        <section id="education" class="py-14">
+          <div class="mb-6 flex items-baseline justify-between">
+            <h2 class="font-pixel text-sm text-gray-400">04 — education</h2>
+          </div>
+          <div class="divide-y divide-gray-200 border-y border-gray-200">
+            <div
+              class="group grid grid-cols-12 items-baseline gap-3 py-2.5 hover:bg-gray-50/80"
+            >
+              <div class="col-span-2 font-mono text-[11px] text-gray-400">
+                2025 - Present
+              </div>
+              <div
+                class="col-span-10 sm:col-span-6 text-[14px] font-medium text-ink"
+              >
+                BS Information Technology
+              </div>
+              <div
+                class="col-span-12 sm:col-span-4 text-[13px] text-gray-500 sm:text-right"
+              >
+                Pamantasan ng Lungsod ng Valenzuela
+              </div>
+            </div>
+          </div>
+          <div class="divide-y divide-gray-200 border-y border-gray-200">
+            <div
+              class="group grid grid-cols-12 items-baseline gap-3 py-2.5 hover:bg-gray-50/80"
+            >
+              <div class="col-span-2 font-mono text-[11px] text-gray-400">
+                2023 - 2025
+              </div>
+              <div
+                class="col-span-10 sm:col-span-6 text-[14px] font-medium text-ink"
+              >
+                General Academic Strand
+              </div>
+              <div
+                class="col-span-12 sm:col-span-4 text-[13px] text-gray-500 sm:text-right"
+              >
+                Lawang Bato National High School
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      function openMobileNav() {
+        const m = document.getElementById("mobileNav");
+        m.classList.remove("hidden");
+        m.classList.add("flex");
+        document.documentElement.style.overflow = "hidden";
+        requestAnimationFrame(() => m.classList.add("is-open"));
+      }
+
+      function refreshPage(e) {
+        e.preventDefault();
+
+        // Remove the section hash from the URL
+        history.replaceState(null, "", location.pathname + location.search);
+
+        // Reload the page
+        location.reload();
+      }
+
+      function closeMobileNav() {
+        const m = document.getElementById("mobileNav");
+        m.classList.remove("is-open");
+        document.documentElement.style.overflow = "";
+        setTimeout(() => {
+          m.classList.add("hidden");
+          m.classList.remove("flex");
+        }, 300);
+      }
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          const m = document.getElementById("mobileNav");
+          if (m && !m.classList.contains("hidden")) closeMobileNav();
+        }
+      });
+
+      function activateCard(card) {
+        if (card.classList.contains("is-center")) return;
+        const deck = card.closest("[data-deck]");
+        const center = deck.querySelector(".deck-card.is-center");
+        const slot = card.classList.contains("is-left")
+          ? "is-left"
+          : "is-right";
+        center.classList.remove("is-center");
+        center.classList.add(slot);
+        card.classList.remove("is-left", "is-right");
+        card.classList.add("is-center");
+      }
+
+      // Fit the sidebar email: icon next to text, filling the width between the 28px left padding and the 29px right gap
+      (function () {
+        function fitEmail() {
+          var link = document.querySelector(
+            'nav[data-guide="sidebar"] .nav-email',
+          );
+          if (!link || link.offsetParent === null) return;
+          var text = link.querySelector(".nav-email-text");
+          var icon = link.querySelector("svg");
+          var gap = 6;
+          text.style.setProperty("font-size", "inherit", "important");
+          text.style.setProperty("letter-spacing", "normal", "important");
+          text.style.setProperty("margin", "0", "important");
+          text.style.setProperty("padding", "0", "important");
+          link.style.setProperty("font-size", "100px", "important");
+          var textW = text.getBoundingClientRect().width;
+          var iconW = icon.getBoundingClientRect().width;
+          var avail = link.getBoundingClientRect().width;
+          var size = ((avail - gap) * 100) / (textW + iconW);
+          link.style.setProperty(
+            "font-size",
+            Math.floor(size * 100) / 100 - 0.05 + "px",
+            "important",
+          );
+        }
+        window.addEventListener("load", fitEmail);
+        window.addEventListener("resize", fitEmail);
+        if (document.fonts && document.fonts.ready)
+          document.fonts.ready.then(fitEmail);
+        document.addEventListener("DOMContentLoaded", fitEmail);
+      })();
+    </script>
+  </body>
+</html>
