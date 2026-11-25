@@ -433,6 +433,18 @@
           background-color: rgb(var(--bg)) !important;
         }
       }
+      @media (max-width: 639px) {
+        section[aria-label="Affiliations"] .font-semibold {
+          font-size: 9.5px !important;
+          line-height: 1.3;
+          overflow-wrap: anywhere;
+        }
+        section[aria-label="Affiliations"] .uppercase {
+          white-space: normal !important;
+          font-size: 9px !important;
+          line-height: 1.3;
+        }
+      }
     </style>
     <script>
       (function () {
@@ -1055,7 +1067,7 @@
           </div>
         </section>
 
-        <!-- Affiliations -->
+        <!-- More Information -->
         <section
           aria-label="Affiliations"
           class="border-t border-gray-200 py-5"
@@ -1455,7 +1467,7 @@
               <p
                 class="relative mt-1 font-mono text-[9.5px] uppercase tracking-wider text-gray-400"
               >
-                Cisco Networking Academy
+                DICT Digital Workforce Hub
               </p>
               <div
                 class="relative mt-3 flex items-center gap-1.5 text-gray-300 group-hover:text-ink"
